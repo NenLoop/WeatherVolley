@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.volleylibrary"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.volleylibrary"
@@ -14,6 +14,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "WEATHER_API", "\"${project.properties["WEATHER_API"]}\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -32,7 +37,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.volley)
+    implementation(libs.picasso)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
